@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Detail Pegawai</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" align="center">
+                    Data Pegawai Termuda
+                </div>
+					<div class="card-body">
+						<table class="table table-borderless">
+                        <tbody>
+                         <tr>
+                            <td><b>NIP</b></td>
+						<td th:text="${pegawaiTermuda.nip}"></td>
+						</tr>
+						<tr>
+							<td><b>Nama</b></td>
+						<td th:text="${pegawaiTermuda.nama}"></td>
+						</tr>
+						<tr>
+						<td><b>Tempat Lahir</b></td>
+						<td th:text="${pegawaiTermuda.tempatLahir}"></td>
+						</tr>
+						<tr>
+                            <td><b>Tanggal Lahir</b></td>
+						<td th:text="${pegawaiTermuda.tanggalLahir}"></td>
+						</tr>
+						<tr>
+                            <td><b>Tahun Masuk</b></td>
+						<td th:text="${pegawaiTermuda.tahunMasuk}"></td>
+						</tr>
+						<tr>
+                            <td><b>Nama Instansi</b></td>
+							<td th:text="${pegawaiTermuda.instansi.nama} + ' - ' + ${pegawaiTermuda.instansi.provinsi.nama}"></td>
+							</tr>
+						<tr>
+                            <td><b>Jabatan</b></td>
+                            <td>
+            					<div th:each="jabatan : ${jabatanListTermuda}">
+							<span class="badge badge-primary" th:text="${jabatan.nama}"></span>
+						</div>
+						</td>
+						</tr>
+						<tr>
+						 <td><b>Gaji</b></td>
+						<td th:text="'Rp' + ${gajiLengkapTermuda}"></td>
+						</tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header" align="center">
+						Data Pegawai Tertua
+					</div>
+					<div class="card-body">
+					 <table class="table table-borderless">
+					  <tbody>
+                        <tr>
+                            <td><b>NIP</b></td>
+						<td th:text="${pegawaiTertua.nip}"></td>
+						</tr>
+						 <tr>
+                            <td><b>Nama</b></td>
+						<td th:text="${pegawaiTertua.nama}"></td>
+						</tr>
+						 <tr>
+                            <td><b>Tempat Lahir</b></td>
+						<td th:text="${pegawaiTertua.tempatLahir}"></td>
+						</tr>
+						 <tr>
+                            <td><b>Tanggal Lahir</b></td>
+						<td th:text="${pegawaiTertua.tanggalLahir}"></td>
+						</tr>
+						<tr>
+                            <td><b>Tahun Masuk</b></td>
+						<td th:text="${pegawaiTertua.tahunMasuk}"></td>
+						</tr>
+						<tr>
+                            <td><b>Nama Instansi</b></td>
+							<td th:text="${pegawaiTertua.instansi.nama} + ' - ' + ${pegawaiTertua.instansi.provinsi.nama}"></td>
+						</tr>
+						<tr>
+                            <td><b>Jabatan</b></td>
+                            <td>
+						
+						<div th:each="jabatan : ${jabatanListTertua}">
+							<span class="badge badge-primary" th:text="${jabatan.nama}"></span>
+						</div>
+						</td>
+						</tr>
+						<tr>
+							<td><b>Gaji</b></td>
+						<td th:text="'Rp' + ${gajiLengkapTertua}"></td>
+						</tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

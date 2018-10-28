@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>View Jabatan</title>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
+		<div id="Content" class="container-full-bg">
+    		<div class="container vertical-center" style="padding-top: 32px;">
+        		<h1 th:text="'Lihat Detail Jabatan - ' + ${jabatan.nama}"></h1>
+        			<div class="card my-5">
+						<table class="table">
+						<tbody>
+   							<tr>
+       						 	<th scope="row">Nama</th>
+							 	<td th:text="${jabatan.nama}"></td>
+							 </tr>
+							<tr>
+        						<th scope="row">Deskripsi:</th>
+								<td th:text="${jabatan.deskripsi}"></td>
+							</tr>
+						<tr>
+								<th scope="row">Gaji Pokok:</th>
+								<td th:text="'Rp ' + ${jabatan.gajiPokok}"></td>
+						</tr>
+						
+					<tbody>
+				</table>
+						
+						 <div class="card-body">
+            				<div style="float:left; clear:none; margin-right: 10px">
+							<a th:href="@{/jabatan/ubah}+'?idJabatan='+${jabatan.id}" class="btn btn-primary">Ubah</a>
+							</div>
+										
+							<form th:action="@{/jabatan/hapus}" th:method="POST" style="float:left; clear:none">
+										<input type="hidden" name="id" th:value="${jabatan.id}" />
+										<button value="submit" class="btn btn-secondary">Hapus</button>
+									</form>
+						</div>
+					</div>
+				</div>
+			</div>
+</body>
+</html>

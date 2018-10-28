@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Tambah Pegawai</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<br>
+<div id="Content" class="container-full-bg">
+	<div class="container vertical-center" style="padding-top: 32px;">
+        <h1 th:text="'Tambah Pegawai'"></h1>
+					<div class="card my-5">
+						<div class="container">
+        					<form th:action="@{/pegawai/tambah}" th:object="${pegawai}" method="POST" style="padding-top:15px">
+            			<div class="form-group">
+            				<label for="nama">Nama :</label>
+            				<input type="text" name="nama" class="form-control" th:field="*{nama}">
+            			</div>
+            			<div class="form-group">
+            				<label for="tempatLahir">Tempat Lahir :</label>
+            				<input type="text" name="tempatLahir" class="form-control" th:field="*{tempatLahir}">
+            			</div>
+						<div class="form-group">
+            				<label for="tanggalLahir">Tanggal Lahir :</label>
+            				<input type="date" name="tanggalLahir" class="form-control" th:field="*{tanggalLahir}">
+            			</div>
+						<div class="form-group">
+            				<label for="tahunMasuk">Tahun Masuk :</label>
+            				<input type="text" name="tahunMasuk" class="form-control" th:field="*{tahunMasuk}">
+            			</div>	
+            			<div class="form-group">
+            				<label for="provinsi">Provinsi :</label>
+            				<select class="form-control" id="provinsi">
+            		  		<option disabled="disabled" selected="selected" >Pilih Provinsi</option>
+					  		<option th:each="provinsi : ${listProvinsi}"
+					          th:value="${provinsi.id}" 
+					          th:text="${provinsi.nama}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+            				<label for="instansi">Instansi :</label>
+            				<select class="form-control" id="instansi" name="instansi">
+					  			<option disabled="disabled" selected="selected" >Pilih Instansi</option>
+							</select>
+            		</div>
+							
+						  <br> Jabatan: <br> (Pilih jabatan yang diinginkan,
+							bisa lebih dari satu)
+
+							<table border="1">
+								<tr th:each="jabatan,iterationStatus : ${listJabatan}">
+									<td th:text="${iterationStatus.count}"></td>
+									<td th:text="${jabatan.nama}"></td>
+									<td><input type="checkbox" th:field="*{jabatanList}"
+										th:value="${jabatan.id}" /> <label
+										th:for="${#ids.prev('jabatanList')}"></label></td>
+								</tr>
+							</table>
+
+							<br>
+							<button type="submit" class="btn btn-primary">Simpan</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	<script>
+		$('#provinsi')
+				.change(
+						function() {
+
+							$
+									.getJSON(
+											"http://localhost:8080/provinsi-get",
+											{
+												provinsiId : $(this).val(),
+												ajax : 'true'
+											},
+											function(data) {
+												var html = '<option disabled="disabled" selected="selected">-- Pilih Instansi --</option>';
+												var len = data.length;
+												for (var i = 0; i < len; i++) {
+													html += '<option value= "'+ data[i].id +'" th:text="'+ data[i].nama +'">'
+															+ data[i].nama
+															+ '</option>';
+												}
+												$('#instansi').html(html);
+											});
+						});
+
+		$('#instansi').change(function() {
+
+			$.getJSON("http://localhost:8080/instansi-get", {
+				instansiId : $(this).val(),
+				ajax : 'true'
+			}, function(data) {
+				this.value = data;
+			});
+		});
+	</script>
+</body>
+
+</html>

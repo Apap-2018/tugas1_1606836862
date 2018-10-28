@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Home</title>
+		<head th:fragment="css">
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+		</head>
+
+		<head th:fragment="js">
+			<script th:src="@{/js/bootstrap.min.js}"></script>
+		</head>
+	</head>
+
+	<body>
+		<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="/" th:text="SIPEG"></a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<a class="nav-link" href="/">Home</a>
+					<a class="nav-link" href="/pegawai/tambah">Tambah Pegawai</a>
+					<a class="nav-link" href="/jabatan/tambah">Tambah Jabatan</a>
+					<a class="nav-link" href="/pegawai/cari">Cari Pegawai</a>
+					<a class="nav-link" href="/jabatan/viewall">Lihat Semua Jabatan</a>
+				</ul>
+			</div>
+		</nav>
+		
+	</body>
+</html>

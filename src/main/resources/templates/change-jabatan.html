@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Ubah Jabatan</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" align="center">
+						Ubah Jabatan
+					</div>
+					<div class="card-body">
+					
+						<form th:action="@{/jabatan/ubah}" th:object="${jabatan}" method="POST">
+							<input type="hidden" id="id_jabatan" th:value="${jabatan.id}"/>
+							<div class="form-group row">
+								<label for="nama" class="col-sm-3 col-form-label">Nama</label>
+                            		<div class="col-sm-9">
+								<input type="text" name="nama" th:value="${jabatan.nama}" class="form-control"/>
+           					 	</div>
+           					 	</div>
+           					<div class="form-group row">
+                            <label for="deskripsi" class="col-sm-3 col-form-label">Deskripsi</label>
+                            <div class="col-sm-9">
+           					 	<input type="text" name="deskripsi" th:value="${jabatan.deskripsi}" class="form-control"/>
+           						</div>
+           					</div>
+           					<div class="form-group row">
+                            <label for="gajiPokok" class="col-sm-3 col-form-label">Gaji Pokok</label>
+                            <div class="col-sm-9">
+               					<input type="number" name="gajiPokok" th:value="${jabatan.gajiPokok}" class="form-control"/>
+               					</div>
+               				</div>
+            				<div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+							<button type="submit" class="btn btn-primary">Simpan</button>
+							</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>		
+</body>
+
+</html>
