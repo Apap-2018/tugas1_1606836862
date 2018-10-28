@@ -101,37 +101,6 @@ public class PegawaiController {
 		return "ubah-pegawai";	
 	}	
 	
-//	@RequestMapping(value = "/pegawai/ubah", method = RequestMethod.POST)
-//	private String ubahPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
-//		String nip = "";
-//		
-//		nip += pegawai.getInstansi().getId();
-//		//System.out.println(pegawai.getInstansi().getId());
-//		//System.out.println(pegawai.getId());
-//		
-//		String[] tglLahir = pegawai.getTanggalLahir().toString().split("-");
-//		String tglLahirString = tglLahir[2] + tglLahir[1] + tglLahir[0].substring(2, 4);
-//		nip += tglLahirString;
-//		//System.out.println(pegawai.getTanggalLahir());
-//		
-//		nip += pegawai.getTahunMasuk();
-//		//System.out.println(pegawai.getTahunMasuk());
-//		
-//		int counterSama = 1;
-//		for (PegawaiModel pegawaiInstansi:pegawai.getInstansi().getPegawaiInstansi()) {
-//		if (pegawaiInstansi.getTahunMasuk().equals(pegawai.getTahunMasuk()) && pegawaiInstansi.getTanggalLahir().equals(pegawai.getTanggalLahir()) && pegawaiInstansi.getId() != pegawai.getId()) {
-//				counterSama++;
-//			}	
-//		}
-//		nip += "0" + counterSama;
-//
-//		pegawai.setNip(nip);
-//		//System.out.println(pegawai.getNip());
-//		//System.out.println(pegawai.getId());
-//		pegawaiService.addPegawai(pegawai);
-//		model.addAttribute("pegawai", pegawai);
-//		return "sukses-ubah-pegawai";
-//	}
 	
 	@RequestMapping(value = "/pegawai/ubah", method = RequestMethod.POST)
 	private String ubahProfilPegawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
@@ -160,8 +129,6 @@ public class PegawaiController {
 	@RequestMapping(value = "/pegawai/termuda-tertua")
 	public String viewPegawaiUmur(@RequestParam("idInstansi") long idInstansi, Model model) {
 		InstansiModel instansi = instansiService.getInstansiById(idInstansi);
-//		PegawaiModel pegawaiTermuda = pegawaiService.findPegawaiTermuda(idInstansi);
-//		PegawaiModel pegawaiTertua = pegawaiService.findPegawaiTertua(idInstansi);
 		PegawaiModel pegawaiTermuda = instansi.getPegawaiByTermuda();
 		PegawaiModel pegawaiTertua = instansi.getPegawaiByTertua();
 		int gajiLengkapTermuda = (int) pegawaiService.getGajiLengkapByNip(pegawaiTermuda.getNip());
