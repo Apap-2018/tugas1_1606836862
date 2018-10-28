@@ -12,7 +12,7 @@
 <body>
 	<nav th:replace="fragments/fragment :: navbar"></nav>
 	<br>
-	<div class="container-fluid">
+	<!--  <div class="container-fluid">
 		<div class="row">
 			<div class="col-md-6">
 				<div class="card">
@@ -38,10 +38,53 @@
 								</option>
 							</select> <br> Instansi: <br> <select id="instansi"
 								name="instansi" th:value="${instansi}" required="required">
-							</select> <br> Jabatan: <br> (Pilih jabatan yang diinginkan,
+							</select>--> 
+	<div id="Content" class="container-full-bg">
+    <div class="container vertical-center" style="padding-top: 32px;">
+        <h1 th:text="'Ubah Data Pegawai'"></h1>
+        <div class="card my-5">
+					<div class="container">
+						<form th:action="@{/pegawai/ubah}" th:object="${pegawai}"
+							method="POST">
+							<input type="hidden" id="nipP" th:value="${pegawai.nip}"
+								th:field="*{nip}" /> <input type="hidden" id="id_pegawai"
+								th:value="${pegawai.id}" th:field="*{id}" />
+					<div class="form-group">
+            			<label for="nama">Nama :</label>
+            			<input type="text" name="nama" class="form-control" th:field="*{nama}">
+            		</div>
+            		<div class="form-group">
+            			<label for="tempatLahir">Tempat Lahir :</label>
+            			<input type="text" name="tempatLahir" class="form-control" th:field="*{tempatLahir}">
+            		</div>
+            		<div class="form-group">
+            			<label for="tanggalLahir">Tanggal Lahir :</label>
+            			<input type="date" name="tanggalLahir" class="form-control" th:field="*{tanggalLahir}">
+            		</div>
+					<div class="form-group">
+            			<label for="tahunMasuk">Tahun Masuk :</label>
+            			<input type="text" name="tahunMasuk" class="form-control" th:field="*{tahunMasuk}">
+            		</div>
+            		<div class="form-group">
+            			<label for="provinsi">Provinsi :</label>
+					 		<select class="form-control" id="provinsi" name="provinsi"
+								th:field="${pegawai.instansi.provinsi}">
+								<option th:each="provinsi : ${listProvinsi}"
+									th:value="${provinsi.id}" th:text="${provinsi.nama}">
+								</option>
+							</select>
+					</div>
+					<div class="form-group">
+            			<label for="instansi">Instansi :</label>
+							<select class="form-control" id="instansi"
+								name="instansi" th:value="${instansi}" required="required">
+							</select>
+					</div>
+					
+							<br> Jabatan: <br> (Pilih jabatan yang diinginkan,
 							bisa lebih dari satu)
 
-							<table border="1">
+							<table class= "table table-bordered" style="width:100%" >
 								<tr th:each="jabatan,iterationStatus : ${listJabatan}">
 									<td th:text="${iterationStatus.count}"></td>
 									<td th:text="${jabatan.nama}"></td>

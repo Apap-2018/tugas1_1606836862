@@ -45,14 +45,14 @@ public class JabatanController {
 		Long id = Long.parseLong(idJabatan);
 		JabatanModel jabatan = jabatanService.getJabatanDetailById(id);
 		model.addAttribute("jabatan", jabatan);
-		return "change-jabatan";
+		return "ubah-jabatan";
 	}
 	
 	@RequestMapping(value = "/jabatan/ubah", method = RequestMethod.POST)
 	public String ubahJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.addJabatan(jabatan);
 		model.addAttribute("jabatan", jabatan);
-		return "sukses-change-jabatan";
+		return "sukses-ubah-jabatan";
 	}
 	
 	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
