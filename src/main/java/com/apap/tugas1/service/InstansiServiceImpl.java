@@ -19,19 +19,6 @@ public class InstansiServiceImpl implements InstansiService {
 	@Autowired
 	private InstansiDB instansiDB;
 
-	/**@Override
-	public List<String> getInstansiList() {
-		List<String> listInstansiBersih = new ArrayList();
-		Set<String> setInstansiBersih = new HashSet();
-		for (InstansiModel instansi:instansiDB.findAll()) {
-			setInstansiBersih.add(instansi.getNama());
-		}
-		for (String instansi:setInstansiBersih) {
-			listInstansiBersih.add(instansi);
-		}
-		return listInstansiBersih;
-	}**/
-
 	@Override
 	public InstansiModel getInstansiById(long id) {
 		return instansiDB.findById(id);

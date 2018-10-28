@@ -42,45 +42,6 @@ public class PegawaiServiceImpl implements PegawaiService {
 		pegawaiDB.save(pegawai);
 	}
 
-//	@Override
-//	public PegawaiModel findPegawaiTermuda(long idInstansi) {
-//		PegawaiModel pegawaiTermuda = new PegawaiModel();
-//		int counter = 0;
-//		for (PegawaiModel pegawai:pegawaiDB.findAll()) {
-//			if (pegawai.getInstansi().getId() == idInstansi) {
-//				if (counter == 0) {
-//					pegawaiTermuda = pegawai;
-//					counter += 1;
-//				}
-//				else {
-//					if (pegawai.getTanggalLahir().compareTo(pegawaiTermuda.getTanggalLahir()) > 0) {
-//						pegawaiTermuda = pegawai;
-//					}
-//				}
-//			}
-//		}
-//		return pegawaiTermuda;
-//	}
-//
-//	@Override
-//	public PegawaiModel findPegawaiTertua(long idInstansi) {
-//		PegawaiModel pegawaiTertua = new PegawaiModel();
-//		int counter = 0;
-//		for (PegawaiModel pegawai:pegawaiDB.findAll()) {
-//			if (pegawai.getInstansi().getId() == idInstansi) {
-//				if (counter == 0) {
-//					pegawaiTertua = pegawai;
-//					counter += 1;
-//				}
-//				else {
-//					if (pegawai.getTanggalLahir().compareTo(pegawaiTertua.getTanggalLahir()) < 0) {
-//						pegawaiTertua = pegawai;
-//					}
-//				}
-//			}
-//		}
-//		return pegawaiTertua;
-//	}
 
 	@Override
 	public List<PegawaiModel> getAllPegawai() {

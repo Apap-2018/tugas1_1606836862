@@ -24,16 +24,5 @@ public class ProvinsiServiceImpl implements ProvinsiService {
 	public List<ProvinsiModel> getProvinsiList() {
 		return provinsiDB.findAll();
 	}
-
-
-	//@Override
-	//public long countEntity() {
-		//return pegawaiDB.count();
-	//}
-
-	//@Override
-	//public PegawaiModel getPegawaiDetailById(Long id) {
-		//return pegawaiDB.getOne(id);
-	//}
 	
 }

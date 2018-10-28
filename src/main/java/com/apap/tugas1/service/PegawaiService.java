@@ -9,6 +9,5 @@ public interface PegawaiService {
 	List<PegawaiModel> getAllPegawai();
 	double getGajiLengkapByNip(String nip);
 	void addPegawai(PegawaiModel pegawai);
-//	PegawaiModel findPegawaiTermuda(long idInstansi);
-//	PegawaiModel findPegawaiTertua(long idInstansi);
+
 }

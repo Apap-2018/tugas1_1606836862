@@ -37,7 +37,7 @@ public class PegawaiController {
 	private String index(Model model) {
 		model.addAttribute("listJabatan",jabatanService.findAllJabatan());
 		model.addAttribute("listInstansi",instansiService.findAllInstansi());
-		return "index";
+		return "homepage";
 	}
 
 	@RequestMapping(value = "/pegawai")
@@ -87,7 +87,7 @@ public class PegawaiController {
 		pegawai.setNip(nip);
 		pegawaiService.addPegawai(pegawai);
 		model.addAttribute("pegawai", pegawai);
-		return "sukses-add-pegawai";
+		return "sukses-tambah-pegawai";
 	}
 	
 	@RequestMapping(value = "/pegawai/ubah")

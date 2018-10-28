@@ -30,7 +30,7 @@ public class JabatanController {
 	private String addJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.addJabatan(jabatan);
 		model.addAttribute("jabatan", jabatan);
-		return "sukses-add-jabatan";
+		return "sukses-tambah-jabatan";
 	}
 	
 	@RequestMapping(value = "/jabatan/view", method = RequestMethod.GET)
@@ -60,7 +60,7 @@ public class JabatanController {
 		JabatanModel deleteJabatan = jabatanService.getJabatanDetailById(jabatan.getId());
 		model.addAttribute("jabatan", deleteJabatan);
 		if (deleteJabatan.jabatanSize() != 0) {
-			return "gagal-delete-jabatan";
+			return "hapus-jabatan-gagal";
 		}
 		else {
 			jabatanService.deleteJabatan(deleteJabatan);
