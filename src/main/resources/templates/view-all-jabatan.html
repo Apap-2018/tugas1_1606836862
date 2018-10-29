@@ -35,7 +35,7 @@
 								<tr th:each="jabatan:${listJabatan}">
 									<td th:text="${jabatan.nama}"></td>
 									<td th:text="${jabatan.deskripsi}"></td>
-									<td th:text="${jabatan.gajiPokok}"></td>
+									<td th:text="'Rp. '+${jabatan.gajiPokok}"></td>
 									<td th:text="${jabatan.jumlahPegawai}"></td>
 								</tr>
 							</tbody>

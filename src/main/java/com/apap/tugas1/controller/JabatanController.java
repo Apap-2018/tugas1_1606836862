@@ -20,6 +20,8 @@ public class JabatanController {
 	@Autowired 
 	private JabatanService jabatanService;
 
+	//Fitur 5: menambahkan jabatan
+	
 	@RequestMapping(value = "/jabatan/tambah", method = RequestMethod.GET)
 	private String addJabatan(Model model) {
 		JabatanModel jabatan = new JabatanModel();
@@ -33,12 +35,16 @@ public class JabatanController {
 		return "sukses-tambah-jabatan";
 	}
 	
+	//Fitur 6: Menampilkan Data Suatu Jabatan
+	
 	@RequestMapping(value = "/jabatan/view", method = RequestMethod.GET)
 	public String viewJabatan(@RequestParam("idJabatan") long idJabatan, Model model) {
 		JabatanModel jabatan = jabatanService.getJabatanDetailById(idJabatan);
 		model.addAttribute("jabatan", jabatan);
 		return "view-jabatan";
 	}
+	
+	//Fitur 7: Mengubah Data Jabatan
 	
 	@RequestMapping(value = "/jabatan/ubah", method = RequestMethod.GET)
 	public String ubahJabatan(@RequestParam("idJabatan") String idJabatan, Model model) {
@@ -55,6 +61,8 @@ public class JabatanController {
 		return "sukses-ubah-jabatan";
 	}
 	
+	//Fitur 8: Menghapus Jabatan
+	
 	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
 	public String hapusJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		JabatanModel deleteJabatan = jabatanService.getJabatanDetailById(jabatan.getId());
@@ -67,6 +75,8 @@ public class JabatanController {
 			return "sukses-delete-jabatan";
 		}
 	}
+	
+	//Fitur 9: Menampilkan Daftar Jabatan
 	
 	@RequestMapping(value = "/jabatan/viewall", method = RequestMethod.GET)
 	public String viewAllJabatan(Model model) {

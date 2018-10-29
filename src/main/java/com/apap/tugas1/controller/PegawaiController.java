@@ -40,6 +40,8 @@ public class PegawaiController {
 		return "homepage";
 	}
 
+	//Fitur 1: Menampilkan Data Pegawai Berdasarkan NIP
+	
 	@RequestMapping(value = "/pegawai")
 	public String viewPegawai(@RequestParam("nip") String nip, Model model) {
 		PegawaiModel pegawai = pegawaiService.getPegawaiDetailByNip(nip);
@@ -51,7 +53,9 @@ public class PegawaiController {
 		return "view-pegawai";
 		
 	}	
-
+	
+	//Fitur 2: Menambahkan Data Pegawai di Suatu Instansi
+	
 	@RequestMapping(value = "/pegawai/tambah", method = RequestMethod.GET)
 	private String addPegawai(Model model) {
 		PegawaiModel pegawai = new PegawaiModel();
@@ -90,6 +94,8 @@ public class PegawaiController {
 		return "sukses-tambah-pegawai";
 	}
 	
+	//Fitur 3: Mengubah Data Pegawai
+	
 	@RequestMapping(value = "/pegawai/ubah")
 	public String changePegawai(@RequestParam("nip") String nip, Model model) {
 		PegawaiModel pegawai = pegawaiService.getPegawaiDetailByNip(nip);
@@ -126,6 +132,8 @@ public class PegawaiController {
 		return "sukses-ubah-pegawai";
 	}
 	
+	//Fitur 10: Menampilkan Pegawai Termuda dan Tertua di Setiap Instansi
+	
 	@RequestMapping(value = "/pegawai/termuda-tertua")
 	public String viewPegawaiUmur(@RequestParam("idInstansi") long idInstansi, Model model) {
 		InstansiModel instansi = instansiService.getInstansiById(idInstansi);
@@ -144,6 +152,8 @@ public class PegawaiController {
 		
 		return "view-tertua-termuda";
 	}		
+	
+	//Fitur 4: Menampilkan Data Pegawai Berdasarkan Instansi, Provinsi, dan/atau Jabatan Tertentu
 	
 	@RequestMapping(value = "/pegawai/cari")
 	public String viewPegawaiFilter(Model model) {
