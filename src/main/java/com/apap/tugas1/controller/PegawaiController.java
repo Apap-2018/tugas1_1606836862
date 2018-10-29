@@ -63,7 +63,7 @@ public class PegawaiController {
 		
 		return "tambah-pegawai";
 	}
-
+	
 	@RequestMapping(value = "/pegawai/tambah", method = RequestMethod.POST)
 	private String addPegwawaiSubmit(@ModelAttribute PegawaiModel pegawai, Model model) {
 		String nip = "";
@@ -76,13 +76,13 @@ public class PegawaiController {
 
 		nip += pegawai.getTahunMasuk();
 
-		int counterSama = 1;
+		int counter = 1;
 		for (PegawaiModel pegawaiInstansi:pegawai.getInstansi().getPegawaiInstansi()) {
 			if (pegawaiInstansi.getTahunMasuk().equals(pegawai.getTahunMasuk()) && pegawaiInstansi.getTanggalLahir().equals(pegawai.getTanggalLahir())) {
-				counterSama += 1;
+				counter += 1;
 			}	
 		}
-		nip += "0" + counterSama;
+		nip += "0" + counter;
 		
 		pegawai.setNip(nip);
 		pegawaiService.addPegawai(pegawai);
